@@ -1,6 +1,6 @@
 <template>
   <div class="profile-body">
-    <div v-for="(item, idx) in listData" :key="idx" class="row">
+    <div v-for="(item, idx) in listData" :key="idx" class="row" @click="handleClick(item.url)">
         <span class="icon">
             <img :src="item.icon" alt="">
         </span>
@@ -19,7 +19,12 @@ export default {
                 return []
             }
         }
-    }
+    },
+    methods: {
+        handleClick(url) {
+            this.$router.push(url)
+        }
+    },
 }
 </script>
 

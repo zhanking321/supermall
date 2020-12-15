@@ -27,8 +27,9 @@ export default {
     },
     methods: {
         tabClick(index) {
-            this.currentIndex = index
-            this.$emit("selecItem", index)
+          // console.log(index)
+          this.currentIndex = index
+          this.$emit("selectItem", index)
         }
     },
 }

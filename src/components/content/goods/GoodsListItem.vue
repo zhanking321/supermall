@@ -24,6 +24,8 @@ export default {
         showImage() {
             if(this.citem.show) {
                 return this.citem.show.img
+            }else if(this.citem.img) {
+                return this.citem.img
             }else {
                 return this.citem.image
             }
