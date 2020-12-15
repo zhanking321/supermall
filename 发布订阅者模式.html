@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script> 
+        // Vue内部监听数据变化的模拟实现
+        const obj = {
+            name: "zjy",
+            age: 18
+        }
+        Object.keys(obj).forEach(key => {
+            let value = obj[key]
+            Object.defineProperty(obj, key, {
+                get() {
+                    const w3 = new Watcher(key)
+                    dep.addSub(w3)
+                    return value
+                },
+                set(newValue) {
+                    console.log(key + "改变了")
+                    value = newValue
+                    dep.notify()
+                }
+            })
+        })
+
+        // Vue内部监听到数据变化如何更新视图的模拟实现
+        class Dep{// 发布者
+            constructor() {
+                this.subs = []
+            }
+            addSub(watcher) {
+                this.subs.push(watcher)
+            }
+            notify() {
+                this.subs.forEach(watcher => {
+                    watcher.update()
+                })
+            }
+        }       
+        class Watcher {// 订阅者
+            constructor(name) {
+                this.name = name
+            }
+            update() {
+                console.log(this.name + "更新了")
+            }
+        }
+        const dep = new Dep()  
+        const w1 = new Watcher("aa")  
+        const w2 = new Watcher("bb")
+        dep.addSub(w1)  // 在Object.defineProperty的get中添加订阅者
+        dep.addSub(w2)  // 同上
+        dep.notify()    // 在Object.defineProperty的set中通知订阅者
+    </script>
+</body>
+</html>

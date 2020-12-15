@@ -1,5 +1,5 @@
 <template>
-    <div id="tabbar">
+    <div class="tab-bar">
       <slot/>
     </div>
 </template>
@@ -11,7 +11,8 @@ export default {
 </script>
 
 <style>
-  #tabbar{
+  .tab-bar{
+    background: white;
     display: flex;
     position: fixed;
     left: 0;

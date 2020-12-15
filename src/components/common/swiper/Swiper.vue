@@ -211,14 +211,12 @@
 
 <style scoped>
   #hy-swiper {
-    height: 100%;
     overflow: hidden;
     position: relative;
   }
 
   .swiper {
     display: flex;
-    height: 100%;
   }
 
   .indicator {

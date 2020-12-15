@@ -22,6 +22,10 @@ const routes = [
     path: '/profile',
     component: () => import('views/profile/Profile')
   },
+  {
+    path: '/detail/:iid',
+    component: () => import('views/detail/Detail')
+  },
 ]
 
 const router = createRouter({
