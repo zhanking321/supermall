@@ -25,6 +25,11 @@ export default {
     components: {
         CheckButton
     },
+    created() {
+        this.$bus.on("ttoast", () => {
+            this.showToast("亲，有缘再见！")
+        })
+    },
     methods: {
         allCheck() {
             // this.$store.commit("allCheck")
@@ -68,6 +73,7 @@ export default {
       height: 44px;
       font-size: 15px;
       display: flex;
+      align-items: center;
   }
 
   .check-content{
@@ -94,9 +100,12 @@ export default {
 
   .calculate{
       color: #fff;
-      width: 100px;
+      width: 95px;
       background: red;
       text-align: center;
-      line-height: 44px;
+      height: 30px;
+      line-height: 30px;
+      border-radius: 10px;
+      margin-right: 10px;
   }
 </style>

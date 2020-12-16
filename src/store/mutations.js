@@ -20,7 +20,25 @@ export default {
         })
     },
 
-/*     allCheck(state) {
-        state.cartList.forEach(item => item.checked = !this.getters.allChecked)
-    } */
+    addOneMore(state, payload) {
+        state.cartList.forEach(item => {
+            if(item.iid == payload.iid) {
+                item.count++
+            }
+        })
+    },
+
+    reduceOneMore(state, payload) {
+        for(let i=0; i < state.cartList.length; i++) {
+            if(state.cartList[i].iid == payload.iid) {
+                if(state.cartList[i].count > 1) {
+                    state.cartList[i].count--
+                    
+                }else {
+                    state.cartList.splice(i, 1)
+                }
+                break
+            }
+        }
+    }
 }

@@ -11,7 +11,11 @@
       <div class="item-desc">商品描述: {{itemInfo.desc}}</div>
       <div class="info-bottom">
         <div class="item-price left">¥{{itemInfo.price}}</div>
-        <div class="item-count right">x{{itemInfo.count}}</div>
+        <div class="item-count right">
+          <button class="reduce" @click="reduce">-</button>
+          <span class="count">{{itemInfo.count}}</span>
+          <button class="add" @click="add">+</button>
+        </div>
       </div>
     </div>
   </div>
@@ -26,12 +30,31 @@ export default {
           type: Object
       }
   },
+  data() {
+    return {
+      
+    }
+  },
   components: {
       CheckButton
   },
+/*   mounted() {
+    console.log(this.itemInfo)
+  }, */
   methods: {
       checkedChange() {
         this.$store.commit("checkedChange", this.itemInfo)
+      },
+      
+      add() {
+        this.$store.commit("addOneMore", this.itemInfo)
+      },
+
+      reduce() {
+        if(this.itemInfo.count == 1) {
+         this.$bus.emit("ttoast")
+        }
+        this.$store.commit("reduceOneMore", this.itemInfo)
       }
   },
 }
@@ -95,5 +118,11 @@ export default {
 
   .info-bottom .item-price {
     color: orangered;
+  }
+
+  .item-count button{
+    width: 20px;
+    margin: 0 2px;
+    border: none;
   }
 </style>

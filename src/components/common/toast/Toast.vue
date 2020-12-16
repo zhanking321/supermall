@@ -30,5 +30,6 @@ export default {
         padding: 10px;
         border-radius: 5px;
         background: rgba(0, 0, 0, 0.7);
+        z-index: 99;
     }
 </style>
