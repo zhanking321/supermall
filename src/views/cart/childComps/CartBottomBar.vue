@@ -25,11 +25,6 @@ export default {
     components: {
         CheckButton
     },
-    created() {
-        this.$bus.on("ttoast", () => {
-            this.showToast("亲，有缘再见！")
-        })
-    },
     methods: {
         allCheck() {
             // this.$store.commit("allCheck")

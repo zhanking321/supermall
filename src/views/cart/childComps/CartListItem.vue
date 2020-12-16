@@ -52,7 +52,7 @@ export default {
 
       reduce() {
         if(this.itemInfo.count == 1) {
-         this.$bus.emit("ttoast")
+         this.$emit("going")
         }
         this.$store.commit("reduceOneMore", this.itemInfo)
       }

@@ -10,7 +10,7 @@ export default {
     props: {
         message: {
             type: String,
-            default: ""
+            default: "詹金颖"
         },
         isShow: {
             type: Boolean,
